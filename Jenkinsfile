@@ -35,7 +35,7 @@ pipeline {
         stage('Build Docker Image') {
             when { branch 'main' }
             steps {
-                echo 'Building Docker image...'
+                echo 'Building Docker image----...'
                 dir('django-notes-app') {
                     sh 'docker build -t django-notes-app:v1 .'
                 }
