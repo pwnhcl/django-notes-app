@@ -19,7 +19,7 @@ pipeline {
 >>>>>>> c32fc6fb849ef33f713b519bf2602a66641dcc64
             }
             steps {
-                echo 'Updating code from main branch...'
+                echo 'Updating code from main branch-------.....'
                 dir('django-notes-app') {
                     script {
                         if (fileExists('.git')) {
