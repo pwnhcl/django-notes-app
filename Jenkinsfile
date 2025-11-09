@@ -2,24 +2,15 @@ pipeline {
     agent any
 
     environment {
-        DEPLOY_SERVER = "ubuntu@13.200.243.119"
+        DEPLOY_SERVER = "ubuntu@65.2.80.240"
         DEPLOY_PATH = "/home/ubuntu/django-notes-app"
     }
 
     stages {
         stage('Code') {
-<<<<<<< HEAD
+            when { branch 'main' }
             steps {
-                echo 'Clonning.....'
-                // Add build steps here
-                git url: 'https://github.com/pwnhcl/django-notes-app.git', branch: 'main'
-=======
-            when {
-                branch 'main'
->>>>>>> c32fc6fb849ef33f713b519bf2602a66641dcc64
-            }
-            steps {
-                echo 'Updating code from main branch-------.....'
+                echo 'Cloning repository...'
                 dir('django-notes-app') {
                     script {
                         if (fileExists('.git')) {
@@ -35,7 +26,7 @@ pipeline {
         stage('Build Docker Image') {
             when { branch 'main' }
             steps {
-                echo 'Building Docker image----...'
+                echo 'Building Docker image...'
                 dir('django-notes-app') {
                     sh 'docker build -t django-notes-app:v1 .'
                 }
